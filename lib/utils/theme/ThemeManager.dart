@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ubuni_phone_app/globals/colors.dart';
 
-class ThemeDataHolder {
-  // light theme
+class ThemeManager {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: lightScaffoldBackgroundColor,
     brightness: Brightness.light,
@@ -12,7 +11,6 @@ class ThemeDataHolder {
     ),
   );
 
-  // dark theme
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: darkScaffoldBackgroundColor,
     brightness: Brightness.dark,
@@ -21,5 +19,4 @@ class ThemeDataHolder {
       color: darkAppBarColor,
     ),
   );
-
 }

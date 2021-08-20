@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ubuni_phone_app/utils/theme/themeDataHolder.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ubuni_phone_app/utils/theme/ThemeManager.dart';
 
+import 'globals/colors.dart';
 import 'modules/home/home.dart';
 
 class Root extends StatefulWidget {
@@ -14,10 +16,8 @@ class _RootState extends State<Root> {
     return MaterialApp(
         title: 'Flutter Demo',
         themeMode: ThemeMode.system,
-        theme: ThemeDataHolder.lightTheme,
-        darkTheme: ThemeDataHolder.darkTheme,
-        home: Home(title: "Home")
-    );
+        theme: ThemeManager.lightTheme,
+        darkTheme: ThemeManager.darkTheme,
+        home: Home(title: "Home"));
   }
 }
-
