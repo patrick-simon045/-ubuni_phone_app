@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ubuni_phone_app/components/text.dart';
 import 'package:ubuni_phone_app/globals/colors.dart';
 import 'package:ubuni_phone_app/globals/padding.dart';
 import 'package:ubuni_phone_app/models/phone.dart';
+import 'package:ubuni_phone_app/modules/phoneDetails/phoneDetails.dart';
 
 class ProductList extends StatelessWidget {
   final List<Phone> phones;
@@ -33,6 +35,17 @@ class ProductList extends StatelessWidget {
               print("${phone.phoneId}");
               print("${phone.phoneName}");
               print("${phone.phoneBrandName}");
+
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (_) => PhoneDetails(
+                    phoneId: phone.phoneId,
+                    phoneName: phone.phoneName,
+                    phoneBrandName: phone.phoneBrandName,
+                  ),
+                ),
+              );
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
