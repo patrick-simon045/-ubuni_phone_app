@@ -14,15 +14,16 @@ class HomeContents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     print("phones.length: ${phones.length}");
     return ListView(
       physics: BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 5.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0),
       children: [
         WelcomeText(),
         Container(
           alignment: Alignment.center,
-          child: TextWidget(text: "Top Deals", style: navigationTitleText),
+          child: TextWidget(text: "$topDeals", style: navigationTitleText),
         ),
         GridView.builder(
           shrinkWrap: true,
@@ -33,8 +34,7 @@ class HomeContents extends StatelessWidget {
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
           ),
-          // itemCount: phones.length,
-          itemCount: 2,
+          itemCount: 6,
           itemBuilder: (context, index) {
             return ClipRRect(
               child: PhoneContainer(phone: phones[index]),
@@ -47,3 +47,5 @@ class HomeContents extends StatelessWidget {
     );
   }
 }
+
+final String topDeals = "Top deals";
