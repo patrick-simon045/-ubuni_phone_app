@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ubuni_phone_app/components/home/phoneContainer.dart';
 import 'package:ubuni_phone_app/models/phone.dart';
+import 'package:ubuni_phone_app/modules/phoneDetails/phoneDetails.dart';
 
 class ProductGrid extends StatelessWidget {
   const ProductGrid({
@@ -24,9 +26,23 @@ class ProductGrid extends StatelessWidget {
       ),
       itemCount: 6,
       itemBuilder: (context, index) {
-        return ClipRRect(
-          child: PhoneContainer(phone: phones[index]),
-          borderRadius: BorderRadius.circular(10.0),
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (_) => PhoneDetails(
+                  phoneId: phones[index].phoneId,
+                  phoneName: phones[index].phoneName,
+                  phoneBrandName: phones[index].phoneBrandName,
+                ),
+              ),
+            );
+          },
+          child: ClipRRect(
+            child: PhoneContainer(phone: phones[index]),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
         );
       },
     );
