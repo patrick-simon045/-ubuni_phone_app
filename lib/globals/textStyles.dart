@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'fontSizes.dart';
 
 // appBar Title style
-final appBarTitleStyle = TextStyle(fontSize: mediumFontSize);
+final appBarTitleStyle = TextStyle(
+  fontSize: mediumFontSize,
+  color: Colors.blueGrey,
+);
 
 // welcome screen text
 final welcomeBoldTextStyle = TextStyle(

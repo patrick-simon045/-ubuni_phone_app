@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ubuni_phone_app/components/text.dart';
-import 'package:ubuni_phone_app/globals/textStyles.dart';
+import 'package:ubuni_phone_app/globals/fontSizes.dart';
 
+import 'exit/exit.dart';
+import 'explore/explore.dart';
 import 'home/home.dart';
 
 class HomeRoot extends StatefulWidget {
@@ -18,19 +20,26 @@ class _HomeRootState extends State<HomeRoot> {
 
   List<Widget> navigationScreens = [
     Home(),
-    Center(child: TextWidget(text: "Explore")),
-    Center(child: TextWidget(text: "Options")),
+    Explore(),
+    Exit(),
   ];
 
-  List<String> navigationLabels = ["Home", "Explore", "Options"];
+  List<String> navigationLabels = ["Home", "All Phones", "Exit"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: TextWidget(
-            text: navigationLabels.elementAt(_currentIndex),
-            style: appBarTitleStyle),
+          text: navigationLabels.elementAt(_currentIndex),
+          style: TextStyle(
+            fontSize: mediumFontSize,
+            color: MediaQuery.of(context).platformBrightness == Brightness.light
+                ? Colors.black
+                : Colors.white,
+          ),
+        ),
         centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(

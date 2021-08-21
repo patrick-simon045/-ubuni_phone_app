@@ -6,7 +6,7 @@ class ThemeManager {
     scaffoldBackgroundColor: lightScaffoldBackgroundColor,
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
       color: lightAppBarColor,
     ),
   );

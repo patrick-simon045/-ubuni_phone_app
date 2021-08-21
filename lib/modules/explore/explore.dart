@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ubuni_phone_app/components/circularProgressIndicatorWidget.dart';
-
 import 'package:ubuni_phone_app/models/phone.dart';
 import 'package:ubuni_phone_app/modules/home/errorOnDataFetch.dart';
-import 'package:ubuni_phone_app/modules/home/homeContents.dart';
 import 'package:ubuni_phone_app/utils/httpHandler/httpGetRequest.dart';
 
-class Home extends StatefulWidget {
+import 'exploreContents.dart';
+
+class Explore extends StatefulWidget {
+  const Explore({
+    Key? key,
+  }) : super(key: key);
+
   @override
-  _HomeState createState() => _HomeState();
+  _ExploreState createState() => _ExploreState();
 }
 
-class _HomeState extends State<Home> {
+class _ExploreState extends State<Explore> {
   final httpHandler = HttpGetRequest();
 
   @override
@@ -20,7 +24,7 @@ class _HomeState extends State<Home> {
       future: httpHandler.requestPhoneList(),
       builder: (context, snapShot) {
         if (snapShot.hasData) {
-          return HomeContents(phones: snapShot.data!);
+          return ExploreContents(phones: snapShot.data!);
         } else if (snapShot.hasError) {
           return ErrorOnDataFetch();
         }

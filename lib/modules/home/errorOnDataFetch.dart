@@ -9,7 +9,7 @@ class ErrorOnDataFetch extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: TextWidget(
-        text: "Something went wrong, pull down to refresh the page",
+        text: "Something went wrong",
       ),
     );
   }

@@ -20,9 +20,9 @@ class _WelcomeTextState extends State<WelcomeText> {
       children: [
         SizedBox(height: largePadding),
         TextWidget(text: "$boldMessage", style: welcomeBoldTextStyle),
-        SizedBox(height: tinyPadding / 5),
+        SizedBox(height: tinyPadding),
         TextWidget(text: "$normalMessage1", style: welcomeNormalTextStyle),
-        SizedBox(height: tinyPadding / 5),
+        SizedBox(height: tinyPadding),
         TextWidget(text: "$normalMessage2", style: welcomeNormalTextStyle),
         SizedBox(height: largePadding),
       ],

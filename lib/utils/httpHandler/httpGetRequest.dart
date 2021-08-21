@@ -1,16 +1,18 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:ubuni_phone_app/globals/getRequestHeaders.dart';
+import 'package:ubuni_phone_app/globals/urls.dart';
 import 'package:ubuni_phone_app/models/phone.dart';
 
 class HttpGetRequest {
-  final String url;
-  final Map<String, String> headers;
+  final urlPhoneList = phoneListEndpoint;
 
-  HttpGetRequest({required this.url, required this.headers});
-
-  Future<Phone> requestPhoneDetails() async {
-    final response = await http.get(Uri.parse(this.url), headers: this.headers);
+  Future<Phone> requestPhoneDetails({required int phoneId}) async {
+    final response = await http.get(
+      Uri.parse("$urlPhoneList/$phoneId"),
+      headers: headers,
+    );
 
     if (response.statusCode == 200) {
       return Phone.fromJson(jsonData: jsonDecode(response.body));
@@ -20,7 +22,7 @@ class HttpGetRequest {
   }
 
   Future<List<Phone>> requestPhoneList() async {
-    final response = await http.get(Uri.parse(this.url), headers: this.headers);
+    final response = await http.get(Uri.parse(urlPhoneList), headers: headers);
 
     if (response.statusCode == 200) {
       print("empty list");

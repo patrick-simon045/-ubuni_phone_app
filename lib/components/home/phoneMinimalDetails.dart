@@ -25,11 +25,23 @@ class PhoneMinimalDetails extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.center,
-              child: TextWidget(text: phone.phoneName),
+              child: TextWidget(
+                text: phone.phoneName,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
+                ),
+              ),
             ),
             Container(
               alignment: Alignment.center,
-              child: TextWidget(text: phone.phoneBrandName),
+              child: TextWidget(
+                text: phone.phoneBrandName,
+                style: TextStyle(
+                  fontWeight: FontWeight.w200,
+                  fontSize: 25.0,
+                ),
+              ),
             ),
           ],
         ),
