@@ -15,11 +15,13 @@ class ExploreContents extends StatefulWidget {
 }
 
 class _ExploreContentsState extends State<ExploreContents> {
-  Set<String> _phoneBrandCategories = Set();
   int _selectedCategoryIndex = 0;
+  List<Phone> _filteredPhoneList = [];
 
   @override
   Widget build(BuildContext context) {
+    Set<String> _phoneBrandCategories = Set();
+
     widget.phones.forEach((phone) {
       _phoneBrandCategories.add(phone.phoneBrandName);
     });
@@ -36,6 +38,7 @@ class _ExploreContentsState extends State<ExploreContents> {
       child: ListView(
         physics: BouncingScrollPhysics(),
         children: [
+          SizedBox(height: mediumPadding),
           Container(
             height: 50.0,
             child: ListView(
@@ -47,16 +50,34 @@ class _ExploreContentsState extends State<ExploreContents> {
                       _phoneBrandCategoriesAsList.indexOf(category);
                   return GestureDetector(
                     onTap: () {
+                      List<Phone> _newFilteredPhoneList = [];
+                      _newFilteredPhoneList = widget.phones
+                          .where((phone) =>
+                              _phoneBrandCategoriesAsList
+                                  .elementAt(categoryIndex) ==
+                              phone.phoneBrandName)
+                          .toList();
+
                       setState(() {
                         _selectedCategoryIndex = categoryIndex;
+                        _filteredPhoneList = _newFilteredPhoneList.length == 0
+                            ? widget.phones
+                            : _newFilteredPhoneList;
                       });
+
+                      // filtering the phone list
+                      print(
+                          "${_phoneBrandCategoriesAsList.elementAt(categoryIndex)}");
+                      print("_filteredPhoneList; $_newFilteredPhoneList");
                     },
                     child: Container(
                       alignment: Alignment.center,
                       padding: EdgeInsets.only(
                         left: _selectedCategoryIndex == categoryIndex
                             ? smallPadding * 2
-                            : 0.0,
+                            : categoryIndex == 0
+                                ? mediumPadding * 2
+                                : 0.0,
                         right: _selectedCategoryIndex == categoryIndex
                             ? smallPadding * 2
                             : smallPadding,
@@ -79,9 +100,11 @@ class _ExploreContentsState extends State<ExploreContents> {
               ).toList(),
             ),
           ),
+          SizedBox(height: mediumPadding),
           ProductList(
-            phones: widget.phones,
+            phones: _filteredPhoneList,
             dimension: dimension,
+            categories: _phoneBrandCategoriesAsList,
           ),
         ],
       ),
