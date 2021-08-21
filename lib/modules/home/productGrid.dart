@@ -16,7 +16,8 @@ class ProductGrid extends StatelessWidget {
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount:
+            MediaQuery.of(context).orientation == Orientation.landscape ? 5 : 2,
         childAspectRatio: 2 / 3,
         crossAxisSpacing: 10.0,
         mainAxisSpacing: 10.0,

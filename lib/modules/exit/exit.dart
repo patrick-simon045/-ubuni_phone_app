@@ -10,9 +10,6 @@ class Exit extends StatelessWidget {
     return Center(
       child: ElevatedButton(
         style: ButtonStyle(
-          // color: MediaQuery.of(context).platformBrightness == Brightness.light
-          //     ? Colors.black
-          //     : Colors.white,
           backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
         ),
         onPressed: () {
